@@ -33,7 +33,5 @@ public class Main {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        UserDaoJDBCImpl usedDao = new UserDaoJDBCImpl();
-
     }
 }
