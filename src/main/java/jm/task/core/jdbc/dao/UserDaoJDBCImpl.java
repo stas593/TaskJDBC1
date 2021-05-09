@@ -19,9 +19,8 @@ public class UserDaoJDBCImpl implements UserDao {
                     "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
                     "  `name` VARCHAR(45) NOT NULL,\n" +
                     "  `lastName` VARCHAR(45) NOT NULL,\n" +
-                    "  `age` VARCHAR(45) NOT NULL,\n" +
-                    "  PRIMARY KEY (`id`),\n" +
-                    "  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE);");
+                    "  `age` INT NOT NULL,\n" +
+                    "  PRIMARY KEY (`id`));");
         } catch (SQLSyntaxErrorException ex) {
             System.out.println("Таблица не создана");
             System.out.println("Таблица с данным названием уже существует");
