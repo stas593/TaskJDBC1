@@ -3,6 +3,7 @@ package jm.task.core.jdbc;
 
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.model.User;
+import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
 
 import java.sql.*;
@@ -17,17 +18,17 @@ public class Main {
     public static void main(String[] args) {
         try(Connection connect = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement statement = connect.createStatement()) {
-            UserServiceImpl dao = new UserServiceImpl();
-            dao.createUsersTable();
-            dao.saveUser("Stas", "Loparev", (byte) 23);
-            dao.saveUser("Anton", "Stelmakh", (byte) 18);
-            dao.saveUser("Andrey", "Ivanon", (byte) 25);
-            dao.saveUser("Ivan", "Alekseev", (byte) 20);
-            for (User user : dao.getAllUsers()){
+            UserService userService = new UserServiceImpl();
+            userService.createUsersTable();
+            userService.saveUser("Stas", "Loparev", (byte) 23);
+            userService.saveUser("Anton", "Stelmakh", (byte) 18);
+            userService.saveUser("Andrey", "Ivanon", (byte) 25);
+            userService.saveUser("Ivan", "Alekseev", (byte) 20);
+            for (User user : userService.getAllUsers()){
                 System.out.println(user);
             }
-            dao.cleanUsersTable();
-            dao.dropUsersTable();
+            userService.cleanUsersTable();
+            userService.dropUsersTable();
 
 
         } catch (SQLException throwables) {
